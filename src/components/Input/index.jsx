@@ -7,37 +7,49 @@ import ProjectCard from "../CommandsCards/ProjectCard";
 import SkillCard from "../CommandsCards/SkillsCard";
 import "./style.css";
 
-const performChangeDirectory = (commands, addCommand, directory, setInputText) => {
-  if (directory == 'skills') {
-    addCommand([
-      ...commands,
-      <SkillCard />
-    ])
-    setInputText("")
-  } else if (directory == 'projects') {
-    addCommand([
-      ...commands,
-      <ProjectCard />
-    ])
-    setInputText("")
-  } else if (directory == 'about') {
-    addCommand([
-      ...commands,
-      <AboutCard />
-    ])
-    setInputText("")
+const listOfOptions = ["projects"];
+
+const performChangeDirectory = (
+  commands,
+  addCommand,
+  directory,
+  setInputText
+) => {
+  if (directory === "projects") {
+    addCommand([...commands, <ProjectCard />]);
+    setInputText("");
+  } else if (directory === "about") {
+    addCommand([...commands, <AboutCard />]);
+    setInputText("");
   }
-}
+};
 
 const Input = ({ commands, addCommand }) => {
   const [inputText, setInputText] = useState();
+
+  const onTabPressed = (event) => {
+    if (event.key === "Tab") {
+      event.preventDefault();
+
+      let contador = 0;
+
+      if (contador > listOfOptions.length) {
+        contador = 0;
+        contador++;
+      }
+
+      console.log("apertei tab caralho");
+      setInputText(`cd ${listOfOptions[contador]}`);
+    }
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const inputArray = inputText.split(' ')
+    const inputArray = inputText.split(" ");
 
-    if (inputArray[0] == 'cd') {
-      performChangeDirectory(commands, addCommand, inputArray[1], setInputText)
+    if (inputArray[0] === "cd") {
+      performChangeDirectory(commands, addCommand, inputArray[1], setInputText);
     }
 
     switch (inputText) {
@@ -53,12 +65,15 @@ const Input = ({ commands, addCommand }) => {
         addCommand([...commands, <HelpCard />]);
         setInputText("");
         break;
+      case "cat skills.json":
+        addCommand([...commands, <SkillCard />]);
+        break;
       default:
         break;
     }
 
     const commandsDiv = document.getElementById("commands");
-    commandsDiv.scrollTop = commandsDiv.scrollHeight
+    commandsDiv.scrollTop = commandsDiv.scrollHeight;
   };
   const handleChange = (event) => {
     setInputText(event.target.value);
@@ -71,7 +86,10 @@ const Input = ({ commands, addCommand }) => {
           placeholder="Digite help para saber todos os comandos"
           value={inputText}
           onChange={handleChange}
+          onKeyDown={onTabPressed}
           className="input--command"
+          id="textId"
+          autoComplete="off"
         />
         <button type="submit" className="input--submit" onClick={handleSubmit}>
           <IoSend />
@@ -79,6 +97,6 @@ const Input = ({ commands, addCommand }) => {
       </form>
     </div>
   );
-}
+};
 
-export default Input
+export default Input;

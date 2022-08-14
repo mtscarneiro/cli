@@ -1,5 +1,5 @@
 import React from "react";
-import { BsGithub, BsLinkedin, BsCodeSlash } from "react-icons/bs";
+import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { AiFillCode } from "react-icons/ai";
 import "./style.css";
 
@@ -10,12 +10,13 @@ export default function Header() {
         <AiFillCode />
       </div>
       <div className="header--socialmedia">
-        <a href="https://github.com/mtscarneiro" target="_blank">
+        <a href="https://github.com/mtscarneiro" target="_blank" rel="noreferrer">
           <BsGithub />
         </a>
         <a
           href="https://www.linkedin.com/in/mtscarneiro23/"
           target="_blank"
+          rel="noreferrer"
         >
           <BsLinkedin />
         </a>
