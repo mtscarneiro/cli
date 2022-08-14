@@ -1,0 +1,35 @@
+header {
+    width: 100%;
+    height: 10vh;
+    background: #202020;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.header--logo {
+    font-size: 30px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header--socialmedia {
+    font-size: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header--socialmedia a {
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header--socialmedia a:first-of-type {
+    margin-right: 30px;
+}
