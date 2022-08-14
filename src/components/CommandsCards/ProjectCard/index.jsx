@@ -14,8 +14,6 @@ export default function ProjectCard() {
           Pellentesque congue pulvinar pellentesque.
         </p>
         <div className="commands--project--buttons">
-          <a href="">Deploy</a>
-          <a href="">Repository</a>
         </div>
       </div>
     </>

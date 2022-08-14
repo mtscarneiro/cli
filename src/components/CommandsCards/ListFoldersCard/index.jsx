@@ -1,5 +1,4 @@
 import React from "react";
-import { SiRubygems } from "react-icons/si";
 
 export default function ListFolders() {
   return (
