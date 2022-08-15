@@ -1,5 +1,6 @@
 # CLI Web Portfolio
 
+![image](https://user-images.githubusercontent.com/79164995/184561218-2c52865c-2dd3-4154-a529-51262c63aa91.png)
 
 
 ## How it works
