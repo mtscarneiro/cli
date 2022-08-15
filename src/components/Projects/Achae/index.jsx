@@ -1,18 +1,20 @@
 import React from "react";
 
-export default function ListFolders() {
+const Achae = () => {
   return (
     <>
       <div className="commands--card">
-        <span>$ {">"} </span> ls
+        <span>$ {">"} </span> cd Achae/
       </div>
       <div className="commands--ls">
         <ul>
-          <li style={{ fontWeight: "bold", color: "beige"}}>projects/</li>
-          <li>skills.json</li>
+          <li>achae.py</li>
+          <li>setup.py</li>
         </ul>
         <br /> <br />
       </div>
     </>
   );
-}
+};
+
+export default Achae;

@@ -1,18 +1,19 @@
 import React from "react";
 
-export default function ListFolders() {
+const UuidExporter = () => {
   return (
     <>
       <div className="commands--card">
-        <span>$ {">"} </span> ls
+        <span>$ {">"} </span> cd uuidExporter/
       </div>
       <div className="commands--ls">
         <ul>
-          <li style={{ fontWeight: "bold", color: "beige"}}>projects/</li>
-          <li>skills.json</li>
+          <li>uuidExporter.java</li>
         </ul>
         <br /> <br />
       </div>
     </>
   );
-}
+};
+
+export default UuidExporter;

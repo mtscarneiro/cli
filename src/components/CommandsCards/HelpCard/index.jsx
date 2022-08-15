@@ -1,13 +1,13 @@
-import React from 'react'
+import React from "react";
 
 export default function HelpCard() {
   return (
     <>
       <div className="commands--card">
-        <span>$ {'>'}</span> help
+        <span>$ {">"}</span> help
       </div>
       <div className="commands--ls">
-        <ul>
+      <ul>
         <br />
         <br />
           <li>help:   <span>show all commands</span></li>       <br /> <br />
@@ -17,5 +17,5 @@ export default function HelpCard() {
         </ul>
       </div>
     </>
-  )
+  );
 }
