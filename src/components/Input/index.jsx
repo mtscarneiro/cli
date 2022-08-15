@@ -1,76 +1,107 @@
 import React, { useState } from "react";
 import { IoSend } from "react-icons/io5";
-import AboutCard from "../CommandsCards/AboutCard";
+import WhoAmI from "../CommandsCards/WhoAmI";
 import HelpCard from "../CommandsCards/HelpCard";
 import ListFolders from "../CommandsCards/ListFoldersCard";
 import ProjectCard from "../CommandsCards/ProjectCard";
 import SkillCard from "../CommandsCards/SkillsCard";
+import Flag from "../Projects/Flag";
 import "./style.css";
-
-const listOfOptions = ["projects"];
-
-const performChangeDirectory = (
-  commands,
-  addCommand,
-  directory,
-  setInputText
-) => {
-  if (directory === "projects") {
-    addCommand([...commands, <ProjectCard />]);
-    setInputText("");
-  } else if (directory === "about") {
-    addCommand([...commands, <AboutCard />]);
-    setInputText("");
-  }
-};
+import Achae from "../Projects/Achae";
+import UuidExporter from "../Projects/UuidExporter";
+import Python from "../Actionables/Python";
+import Java from "../Actionables/Java";
+import Clonetflix from "../Projects/Clonetflix";
+import Yarn from "../Actionables/Yarn";
+import PentestNike from "../Projects/PentenstNike";
 
 const Input = ({ commands, addCommand }) => {
   const [inputText, setInputText] = useState();
 
-  const onTabPressed = (event) => {
-    if (event.key === "Tab") {
-      event.preventDefault();
-
-      let contador = 0;
-
-      if (contador > listOfOptions.length) {
-        contador = 0;
-        contador++;
-      }
-
-      console.log("apertei tab caralho");
-      setInputText(`cd ${listOfOptions[contador]}`);
-    }
+  const clearConsole = () => {
+    addCommand([]);
+    setInputText("");
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const changeDirectoryToProjects = () => {
+    addCommand([...commands, <ProjectCard />]);
+    setInputText("");
+  };
 
-    const inputArray = inputText.split(" ");
-
-    if (inputArray[0] === "cd") {
-      performChangeDirectory(commands, addCommand, inputArray[1], setInputText);
-    }
-
+  const desiredCommand = (inputText) => {
     switch (inputText) {
       case "clear":
-        addCommand([]);
+        clearConsole();
+        break;
+      case "cd projects":
+        changeDirectoryToProjects();
         setInputText("");
         break;
-      case "ls":
-        addCommand([...commands, <ListFolders />]);
+      case "cd Achae":
+        addCommand([...commands, <Achae />]);
+        setInputText("");
+        break;
+      case "python3 achae.py":
+        addCommand([...commands, <Python />]);
+        setInputText("");
+        break;
+      case "cd uuidExporter":
+        addCommand([...commands, <UuidExporter />]);
+        setInputText("");
+        break;
+      case "java uuidExporter.java":
+        addCommand([...commands, <Java />]);
+        setInputText("");
+        break;
+      case "cd clonetflix":
+        addCommand([...commands, <Clonetflix />]);
+        setInputText("");
+        break;
+      case "yarn dev":
+        addCommand([...commands, <Yarn />]);
+        setInputText("");
+        break;
+      case "cat README.md":
+        addCommand([
+          ...commands,
+          "\n\n$> cat README.md \n\n",
+          <div>#Run yarn dev</div>,
+        ]);
+        setInputText("");
+        break;
+      case "cd pentest-nike2022":
+        addCommand([...commands, <PentestNike />]);
+        setInputText("");
+        break;
+      case "cat skills.json":
+        addCommand([...commands, <SkillCard />]);
+        setInputText("");
+        break;
+      case "whoami":
+        addCommand([...commands, <WhoAmI />]);
+        setInputText("");
+        break;
+      case "cat flag":
+        addCommand([...commands, <Flag />]);
         setInputText("");
         break;
       case "help":
         addCommand([...commands, <HelpCard />]);
         setInputText("");
         break;
-      case "cat skills.json":
-        addCommand([...commands, <SkillCard />]);
+      case "ls":
+        addCommand([...commands, <ListFolders />]);
+        setInputText("");
         break;
       default:
         break;
     }
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    desiredCommand(inputText);
 
     const commandsDiv = document.getElementById("commands");
     commandsDiv.scrollTop = commandsDiv.scrollHeight;
@@ -86,7 +117,6 @@ const Input = ({ commands, addCommand }) => {
           placeholder="Digite help para saber todos os comandos"
           value={inputText}
           onChange={handleChange}
-          onKeyDown={onTabPressed}
           className="input--command"
           id="textId"
           autoComplete="off"

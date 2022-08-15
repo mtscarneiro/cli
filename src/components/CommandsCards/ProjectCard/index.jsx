@@ -4,18 +4,23 @@ export default function ProjectCard() {
   return (
     <>
       <div className="commands--card">
-        <span>$ {'>'} </span> cd projects
+        <span>$ {'>'} </span> cd projects/
       </div>
-      <div className="commands--project--card">
-        <h3>Netflix Clone</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-          condimentum libero a enim accumsan, ac mattis ligula gravida.
-          Pellentesque congue pulvinar pellentesque.
-        </p>
-        <div className="commands--project--buttons">
-        </div>
+      <div className="commands--ls">
+        <ul>
+          <li style={{ fontWeight: "bold", color: "beige"}}>uuidExporter/</li>
+          <li style={{ fontWeight: "bold", color: "beige"}}>Achae/</li>
+          <li style={{ fontWeight: "bold", color: "beige"}}>clonetflix/</li>
+          <li style={{ fontWeight: "bold", color: "beige"}}>cli-portfolio/</li>
+          <li style={{ fontWeight: "bold", color: "beige"}}>pentest-nike2022/</li>
+          {/* <li style={{ fontWeight: "bold", color: "beige"}}>nike-transactional-emails/</li>
+          <li style={{ fontWeight: "bold", color: "beige"}}>centauro-whatsapp-nps/</li>
+          <li style={{ fontWeight: "bold", color: "beige"}}>vulnerability-management/</li> */}
+          <li>flag</li>
+        </ul>
+        <br /> <br />
       </div>
+      <br />
     </>
   );
 }
